@@ -55,6 +55,14 @@ a {
   color: #2d8fc8;
   transition: 0.3s;
 }
+
+li {
+  list-style: none;
+}
+li a {
+  color: #dfdfdf;
+  text-decoration: none;
+}
 .link {
   color: #2d8fc8;
   transition: 0.3s;
@@ -130,6 +138,10 @@ header nav ul a:hover:after {
   left: 0;
 }
 
+header nav ul a:hover {
+  color: #eee;
+}
+
 .btn {
   padding: 8px 25px;
   border: none;
@@ -168,6 +180,7 @@ nav .btn-contact:hover {
   grid-template-columns: 1.2fr 1fr;
   gap: 32px;
 }
+
 .hero-section .introduction .name {
   color: #3cacae;
   font-size: 75px;
@@ -198,12 +211,29 @@ nav .btn-contact:hover {
   color: #c26dbc;
   font-size: 74px;
   text-shadow: #c26dbc 5px 10px 50px;
+  animation: fadeInRight 1s forwards;
 }
 
-.hero-section .quote {
+.quote {
+  transition: 0.4s;
   color: #008cd2;
   font-size: 36px;
   font-family: "Feeling Passionate";
+  animation: typing 1s steps(30, end);
+
+  overflow: hidden;
+
+  white-space: nowrap;
+}
+
+.round-container {
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+  background-color: #bbbbbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-section .learning {
@@ -215,12 +245,14 @@ nav .btn-contact:hover {
   border-radius: 100px;
   font-size: 23px;
   font-weight: bold;
+  animation: fa;
 
   height: 70px;
   width: 220px;
 }
 
 .hero-section .contact {
+  animation: fadeInRight 1s forwards;
   position: relative;
   top: 40px;
   display: flex;
@@ -361,7 +393,7 @@ nav .btn-contact:hover {
 }
 
 .projects-section .container {
-  margin-left: 130px;
+  padding-left: 130px;
   margin-top: 100px;
   width: 100%;
   height: 100vh;
@@ -371,13 +403,22 @@ nav .btn-contact:hover {
 .projects-section .container .top-section .heading {
   font-family: "Playfair Display";
   text-align: center;
-  padding-right: 100px;
 }
 
 .projects-section .container .bottom-section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 130px;
+}
+
+.card {
+  display: flex;
+
+  background-color: #dfdfdf;
+  width: 40%;
+  height: 80%;
+  border-radius: 42px;
+  padding: 20px 5px;
 }
 
 .projects-section .container .bottom-section .card {
@@ -427,8 +468,304 @@ nav .btn-contact:hover {
   filter: blur(5px);
 }
 
+.contact-section {
+  height: 100vh;
+  width: 100vw;
+  background: url(../images/contact-section-bg.png), #eee;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: lighten;
+}
+
+.contact-section > .container {
+  display: grid;
+  padding-top: 80px;
+  padding-left: 100px;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.5fr 3fr;
+}
+
+.contact-section .container .top-section {
+  grid-column: span 2;
+}
+
+.contact-section .container .top-section .heading {
+  text-align: center;
+}
+.contact-section .container .top-section .quote {
+  text-align: center;
+}
+
+.contact-section .container .bottom-left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 50px 100px;
+  padding-left: 187px;
+}
+
+.contact-section .container .bottom-left-section .round-container img {
+  width: 80%;
+  height: 80%;
+}
+
+.contact-section .container .bottom-left-section .contact-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.contact-section .container .bottom-left-section .contact-info .contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-section
+  .container
+  .bottom-left-section
+  .contact-info
+  .contact-detail
+  .detail {
+  font-weight: 400;
+}
+
+.contact-section .container .bottom-left-section .contact-info .sub-heading {
+  color: #008cd2;
+  font-size: 24px;
+}
+
+.contact-section .container .bottom-right-section .card {
+  width: 485px;
+  height: 463px;
+}
+
+.contact-section .container .bottom-right-section .card .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  gap: 50px;
+}
+.contact-section .container .bottom-right-section .card .container .heading {
+  font-size: 40px;
+  padding-left: 40px;
+  padding-top: 10px;
+  align-self: flex-start;
+}
+
+.card .input-box {
+  position: relative;
+  padding-left: 10%;
+
+  width: 100%;
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 35px;
+}
+.card form input {
+  width: 80%;
+  border: none;
+  outline: none;
+
+  border-bottom: 2px black solid;
+  height: 30px;
+  background: transparent;
+
+  align-self: flex-start;
+}
+
+.card .input-box label {
+  position: absolute;
+  top: 50%;
+  transition: 0.3s;
+  font-size: 16px;
+  left: 50px;
+  transform: translateY(-50%);
+}
+
+.submit-btn {
+  position: relative;
+  top: 20%;
+  left: 10%;
+  border-radius: 5px;
+  width: 73%;
+}
+
+.card input:focus ~ label,
+.card input:valid ~ label {
+  top: -9px;
+}
+
+.footer-section {
+  background: url("../images/footer-background.png") no-repeat center;
+  background-size: cover;
+  height: 80vh;
+  width: 100vw;
+}
+
+.footer-section .container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 0.9fr 1fr;
+
+  gap: 16px;
+}
+
+.footer-section .top-section {
+  padding-left: 100px;
+  padding-top: 80px;
+}
+
+.footer-section .heading {
+  text-align: center;
+  font-size: 75px;
+}
+.footer-section .link {
+  text-align: center;
+  font-size: 28px;
+}
+
+.footer-section .bottom-section {
+  background-color: #282828;
+  color: #dfdfdf;
+  padding-left: 80px;
+  padding-top: 60px;
+  display: flex;
+  gap: 200px;
+}
+
+.footer-section .bottom-section .name {
+  font-size: 44px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #3cacae;
+  text-shadow: #3cacae 5px 10px 50px;
+}
+
+.footer-section .bottom-section .detail {
+  width: 260px;
+  font-size: 19px;
+  color: #dfdfdf;
+}
+
+.footer-section .bottom-section .middle-section {
+  padding-top: 20px;
+}
+
+.footer-section .bottom-section .middle-section .quick-links {
+  font-size: 24px;
+  padding-bottom: 15px;
+  text-decoration: none;
+}
+
+.footer-section .bottom-section .middle-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 19px;
+  padding-left: 5px;
+}
+
+.footer-section .bottom-section .middle-section ul a {
+  position: relative;
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer-section .bottom-section .middle-section ul a::after {
+  background: none repeat scroll 0 0 transparent;
+  position: absolute;
+  background-color: #eee;
+  content: "";
+  height: 2px;
+  width: 0%;
+  left: 50%;
+  bottom: -2px;
+  transition: 0.3s;
+}
+
+.footer-section .bottom-section .middle-section ul a:hover::after {
+  width: 100%;
+  left: 0;
+}
+.footer-section .bottom-section .right-section {
+  padding-top: 110px;
+  padding-left: 200px;
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+}
+.footer-section .bottom-section .right-section .logos {
+  display: flex;
+  gap: 20px;
+  height: 35px;
+}
+
+.footer-section .bottom-section .right-section .logos img {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-section .bottom-section .right-section .logos a {
+  height: fit-content;
+}
+
+.footer-section .bottom-section .right-section .btn {
+  width: 140px;
+}
+
+.blue-btn {
+  background: #008cd2;
+  border-radius: 5px;
+}
+
+.blue-btn:hover {
+  background: #005c8a;
+}
+
+.hero-section .introduction .name {
+  animation: fadeInLeft 2s forwards;
+}
+
 @keyframes rotate-hue {
   to {
     filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
